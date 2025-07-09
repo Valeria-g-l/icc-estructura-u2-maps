@@ -1,38 +1,33 @@
 package controllers;
+
+import java.util.Map;
 import java.util.HashMap;
-
-
 import models.Empleado;
 
 public class EmpleadoDAOHashMap implements EmpleadoDAO {
-    HashMap<Empleado,Empleado> empleados;
 
-    public EmpleadoDAOHashMap(HashMap<Empleado, Empleado> empleados) {
+    private Map<Empleado, Empleado> empleados = new HashMap<>();
+
+    public EmpleadoDAOHashMap() {}
+
+    public EmpleadoDAOHashMap(Map<Empleado, Empleado> empleados) {
         this.empleados = empleados;
     }
 
     @Override
     public void add(Empleado empleado) {
         empleados.put(empleado, empleado);
-    
-    }
-
-    @Override
-    public void remove(int id) {
-       empleados.remove(id);
     }
 
     @Override
     public void list() {
-       if (empleados.isEmpty()) {
-        System.out.println("No hay empleados registrados.");
-    } else {
-        System.out.println("Lista de empleados:");
-        for (Empleado empleado : empleados.values()) {
+        for (Empleado empleado : empleados.keySet()) {
             System.out.println(empleado);
         }
     }
-    }
 
-    
+    @Override
+    public void remove(int id) {
+        empleados.remove(new Empleado(id));
+    }
 }

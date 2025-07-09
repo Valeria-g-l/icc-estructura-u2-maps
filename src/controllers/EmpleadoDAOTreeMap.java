@@ -1,16 +1,17 @@
 package controllers;
 
+import java.util.Map;
 import java.util.TreeMap;
-import java.util.TreeSet;
-
 import models.Empleado;
 
 public class EmpleadoDAOTreeMap implements EmpleadoDAO {
 
-    private TreeMap<Empleado, Empleado> empleados;
+    private Map<Empleado, Empleado> empleados = new TreeMap<>();
 
-    public EmpleadoDAOTreeMap() {
-        empleados = new TreeMap<>(); 
+    public EmpleadoDAOTreeMap() {}
+
+    public EmpleadoDAOTreeMap(Map<Empleado, Empleado> empleados) {
+        this.empleados = empleados;
     }
 
     @Override
@@ -19,23 +20,14 @@ public class EmpleadoDAOTreeMap implements EmpleadoDAO {
     }
 
     @Override
-    public void remove(int id) {
-        empleados.remove(id);
-    }
-
-    @Override
     public void list() {
-    if (empleados.isEmpty()) {
-        System.out.println("No hay empleados registrados.");
-    } else {
-        System.out.println("Lista de empleados:");
-        for (Empleado empleado : empleados.values()) {
+        for (Empleado empleado : empleados.keySet()) {
             System.out.println(empleado);
         }
     }
 
-}
-
-        
-
+    @Override
+    public void remove(int id) {
+        empleados.remove(new Empleado(id));
+    }
 }

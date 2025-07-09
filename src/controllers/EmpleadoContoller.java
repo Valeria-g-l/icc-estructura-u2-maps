@@ -1,23 +1,17 @@
 package controllers;
+
 import models.Empleado;
 
 public class EmpleadoContoller {
 
     private EmpleadoDAO empleadoDAO;
 
-    public EmpleadoContoller() {
-        this.empleadoDAO = new EmpleadoDAOTreeMap();
+    public EmpleadoContoller(EmpleadoDAO empleadoDAO) {
+        this.empleadoDAO = empleadoDAO;
     }
 
-    public void add(Empleado empleado) {
+    public void addEmpleado(Empleado empleado) {
         empleadoDAO.add(empleado);
-    }
-
-    public Empleado obtenerEmpleado(int id) {
-        return null;
-    }
-
-    public void actualizarEmpleado(Empleado empleado) {
     }
 
     public void eliminarEmpleado(int id) {
