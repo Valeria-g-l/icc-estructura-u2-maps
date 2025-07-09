@@ -7,13 +7,8 @@ import models.Empleado;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        // Ejecuta el ejemplo de uso de HashMap con ejemplos sencillos
         runMapExamlpe();
-
-        // Ejecuta el ejemplo de gestión de empleados usando HashMap
         runEmpleadoExample();
-
-        // Ejecuta los ejercicios de sumatoria y anagramas
         runEjerccios();
     }
 
@@ -29,7 +24,19 @@ public class App {
     }
 
     private static void runEjerccios() {
-        throw new UnsupportedOperationException("Not implemented yet");
+
+    EmpleadoContoller controller = new EmpleadoContoller();
+
+    controller.add(new Empleado(3, "Pedro"));
+    controller.add(new Empleado(1, "Juan"));
+    controller.add(new Empleado(2, "Pedro"));
+    controller.add(new Empleado(5, "Pedro"));
+    controller.add(new Empleado(4, "Luis"));
+
+    System.out.println("Empleados ordenados por ID:");
+    controller.listarEmpleados();
+}
+
 
     }
-}
+
